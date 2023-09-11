@@ -57,14 +57,18 @@ def display_data():
             st.write(df)
 
             # Mengunduh data sebagai file Excel
-            excel_buffer = io.BytesIO()
-            df.to_excel(excel_buffer, index=False, engine='openpyxl', encoding='utf-8-sig')
-            excel_buffer.seek(0)
+            def convert_df(df):
+            return df.to_csv(index=False).encode('utf-8')
+
+
+            csv = convert_df(df)
+
             st.download_button(
-                label="Unduh Data Excel",
-                data=excel_buffer,
-                file_name="data_polusi.xlsx",
-                key="download_data_button"
+           "Press to Download",
+           csv,
+           "file.csv",
+           "text/csv",
+           key='download-csv'
             )
         else:
             st.error("Gagal mengambil data. Kode status:", response.status_code)
