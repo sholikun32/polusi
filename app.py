@@ -57,7 +57,11 @@ def display_data():
             st.write(df)
 
             # Mengunduh data sebagai file Excel
-            excel_data = df.to_excel(index=False)
+            excel_data = io.BytesIO()
+            with pd.ExcelWriter(excel_data, engine='xlsxwriter', mode='xlsx', options={'strings_to_numbers': True}) as writer:
+                df.to_excel(writer, index=False)
+
+            excel_data.seek(0)
             st.download_button(
                 label="Unduh Data Excel",
                 data=excel_data,
