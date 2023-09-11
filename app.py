@@ -58,7 +58,7 @@ def display_data():
 
             # Mengunduh data sebagai file Excel
             excel_data = io.BytesIO()
-            with pd.ExcelWriter(excel_data, engine='xlsxwriter', mode='xlsx', options={'strings_to_numbers': True}) as writer:
+            with pd.ExcelWriter(excel_data, engine='xlsxwriter', mode='xlsx') as writer:
                 df.to_excel(writer, index=False)
 
             excel_data.seek(0)
