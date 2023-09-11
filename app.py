@@ -57,19 +57,10 @@ def display_data():
             st.write(df)
 
             # Mengunduh data sebagai file Excel
-            def convert_df(df):
-            return df.to_csv(index=False).encode('utf-8')
-
-
-            csv = convert_df(df)
-
-            st.download_button(
-           "Press to Download",
-           csv,
-           "file.csv",
-           "text/csv",
-           key='download-csv'
-            )
+            df_xlsx = to_excel(df)
+            st.download_button(label='📥 Download Current Result',
+                                data=df_xlsx ,
+                                file_name= 'df_test.xlsx')
         else:
             st.error("Gagal mengambil data. Kode status:", response.status_code)
 
