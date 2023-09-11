@@ -1,6 +1,9 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use("Agg")  # Menggunakan backend non-interactive "Agg"
+import matplotlib.pyplot as plt
 
 # Data Anda dalam bentuk DataFrame
 data = pd.DataFrame({
