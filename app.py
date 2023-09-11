@@ -58,9 +58,7 @@ def display_data():
 
             # Mengunduh data sebagai file Excel
             
-            st.download_button(label='📥 Download Current Result',
-                                data=df ,
-                                file_name= 'df_test.xlsx')
+            
         else:
             st.error("Gagal mengambil data. Kode status:", response.status_code)
 
