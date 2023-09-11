@@ -60,7 +60,7 @@ def display_data():
             excel_data = df.to_excel(index=False)
             st.download_button(
                 label="Unduh Data Excel",
-                data=io.BytesIO(excel_data),
+                data=excel_data,
                 file_name="data_polusi.xlsx",
                 key="download_data_button"
             )
