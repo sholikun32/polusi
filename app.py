@@ -57,7 +57,7 @@ def display_data():
             st.write(df)
 
             # Mengunduh data sebagai file Excel
-            excel_data = df.to_excel(index=False)
+            excel_data = df.to_excel(index=False, engine='openpyxl', encoding='utf-8-sig')
             st.download_button(
                 label="Unduh Data Excel",
                 data=excel_data,
